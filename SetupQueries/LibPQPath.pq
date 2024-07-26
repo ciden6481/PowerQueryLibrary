@@ -15,7 +15,7 @@ LibPQPath:
         //    "D:\ExtractLocation\LibPQ\Tests"
     },
     Web = {
-        "https://github.com/ciden6481/PowerQueryFunctions/raw/master/Functions/"
+        "https://github.com/ciden6481/PowerQueryFunctions/raw/main/Functions/"
         //"https://github.com/sio/LibPQ/raw/master/Modules/",
         // "https://github.com/tycho01/pquery/raw/master/",
     }

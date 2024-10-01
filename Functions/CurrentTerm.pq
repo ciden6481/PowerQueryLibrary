@@ -1,3 +1,5 @@
+
+//Use when no term table already exists
 let
     Source = () =>
         let
@@ -14,3 +16,18 @@ let
             STRM1
 in
     Source
+
+
+// Term
+let
+    //Use after TermTableWithVCCSAcadYr.pq
+    Source = Term,
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"TermBeginDt", type datetime}, {"TermEndDt", type datetime}}),
+    #"Filtered Rows1" = Table.SelectRows(
+                #"Changed Type",
+                each [TermBeginDt] < DateTime.FixedLocalNow() and [TermEndDt] > DateTime.FixedLocalNow()
+            ),
+            #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1", {"STRM"}),
+            STRM1 = #"Removed Other Columns"{0}[STRM]
+        in
+            STRM1
